@@ -1,0 +1,27 @@
+{
+  "name": "com.danfoss",
+  "version": "2.0.1",
+  "description": "This app adds support for the Z-wave devices made by Danfoss (http://www.danfoss.com/).",
+  "main": "app.js",
+  "requires": true,
+  "dependencies": {
+    "homey-zigbeedriver": "^1.6.12",
+    "homey-zwavedriver": "^2.1.8",
+    "zigbee-clusters": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-athom": "^2.1.0",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/athombv/com.danfoss.git"
+  },
+  "author": "Athom BV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athombv/com.danfoss/issues"
+  },
+  "homepage": "https://forum.athom.com/discussion/3914/app-z-wave-danfoss-lc12-lc13-z-wave-devices-main-discussion-topic"
+}

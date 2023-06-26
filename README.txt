@@ -1,0 +1,1 @@
+Makes Homey work with the Z-Wave version of the Danfoss LC13 and Danfoss Ally Zigbee version.
