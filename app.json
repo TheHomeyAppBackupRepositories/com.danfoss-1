@@ -1,1 +1,537 @@
-{"_comment":"This file is generated. Please edit .homeycompose/app.json instead.","id":"com.danfoss","sdk":3,"name":{"en":"Danfoss","nl":"Danfoss"},"version":"2.3.1","compatibility":">=5.0.0","description":{"en":"Optimize the heating of your home","nl":"Optimaliseer de verwarming van uw huis"},"category":["climate"],"brandColor":"#D8000F","tags":{"en":["thermostat","heating","valve","thermovalve","danfoss","RS-Z"],"nl":["thermostaat","verwarming","ventiel","thermostaatknop","danfoss","RS-Z"]},"images":{"large":"/assets/images/large.jpg","small":"/assets/images/small.jpg"},"platforms":["local","cloud"],"author":{"name":"Athom B.V."},"support":"https://support.athom.com/hc/en-us/requests/new","contributors":{"developers":[{"name":"Athom B.V.","email":"info@athom.com"},{"name":"Marco Ruiter","email":"mruiter@tuxweb.nl"},{"name":"Menno Bliek (Momotica)","email":"menno@momotica.nl"}]},"flow":{"triggers":[{"id":"battery_alarm","deprecated":true,"title":{"en":"The battery alarm turned on","nl":"De batterijwaarschuwing gaat aan"},"args":[{"name":"device","type":"device","filter":"driver_id=RS|LC13"}]}]},"drivers":[{"name":{"en":"LC13 Thermostat","nl":"LC13 Thermostaat"},"energy":{"batteries":["AA","AA"]},"platforms":["local","cloud"],"connectivity":["zwave"],"zwave":{"manufacturerId":2,"productTypeId":[5,277,32773],"wakeUpInterval":1800,"productId":[1,2,3,4,373,40976],"learnmode":{"instruction":{"en":"Press the middle button on your Danfoss LC13","nl":"Druk op de middelste knop van de Danfoss LC13"}},"associationGroups":[1]},"class":"thermostat","capabilities":["target_temperature","measure_battery"],"capabilitiesOptions":{"target_temperature":{"min":4,"max":28,"step":0.5}},"images":{"large":"/drivers/LC13/assets/images/large.jpg","small":"/drivers/LC13/assets/images/small.jpg"},"id":"LC13"},{"name":{"en":"RS-Z Room Sensor","nl":"RS-Z Kamer Sensor"},"class":"thermostat","capabilities":["measure_temperature","target_temperature","measure_battery"],"images":{"large":"/drivers/RS/assets/images/large.png","small":"/drivers/RS/assets/images/small.png"},"energy":{"batteries":["AA","AA"]},"platforms":["local","cloud"],"connectivity":["zwave"],"zwave":{"manufacturerId":2,"productTypeId":[3],"wakeUpInterval":1800,"productId":[32784],"learnmode":{"instruction":{"en":"Press the LED button on your Danfoss RS-Z.","nl":"Druk op de LED knop van de Danfoss RS-Z."}},"unlearnmode":{"instruction":{"en":"Hold down the 3 buttons on the RS-Z for 5 seconds (up, down and LED button).","nl":"Houd de 3 knoppen op de RS-Z 5 seconden ingedrukt (omhoog, omlaag en LED knop)."}},"associationGroups":[1],"associationGroupsOptions":{"1":{"hint":{"en":"Lifeline. All run-time reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)","nl":"Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"}}},"defaultConfiguration":[{"id":1,"size":2,"value":5},{"id":2,"size":2,"value":5},{"id":3,"size":2,"value":12},{"id":4,"size":2,"value":28},{"id":5,"size":2,"value":1},{"id":6,"size":1,"value":1},{"id":7,"size":1,"value":1},{"id":8,"size":1,"value":1},{"id":9,"size":1,"value":1},{"id":10,"size":1,"value":5},{"id":11,"size":1,"value":1}]},"capabilitiesOptions":{"target_temperature":{"min":0,"max":40,"step":0.5}},"id":"RS","settings":[{"type":"group","label":{"en":"Temperature settings","nl":"Temperatuur instellingen"},"collapsed":false,"children":[{"id":"Temperature_Report_threshold","type":"number","label":{"en":"Temperature Report threshold","nl":"Drempel temperatuurrapport"},"hint":{"en":"From 0.1 to 10°C in 0.1°C steps","nl":"Van 0.1 tot 10°C in stappen van 0.1°C"},"zwave":{"index":1,"size":2},"attr":{"min":1,"max":100},"value":5},{"id":"Set-point_display_resolution","type":"number","label":{"en":"Set-point display resolution","nl":"Temperatuur instel waarde"},"hint":{"en":"From 0.1 to 10°C in 0.1°C steps","nl":"Van 0.1 tot 10°C in stappen van 0.1°C"},"zwave":{"index":2,"size":2},"attr":{"min":1,"max":100},"value":5},{"id":"Min_setpoint","type":"number","label":{"en":"Min set-point and override limit","nl":"Minimale instelbare temperatuur"},"hint":{"en":"From min 0°C to max setpoint/override limit","nl":"Van minimaal 0°C tot de maximale instelbare temperatuur"},"zwave":{"index":3,"size":2},"attr":{"min":0,"max":40},"value":12},{"id":"Max_setpoint","type":"number","label":{"en":"Max set-point and override limit","nl":"Maximale instelbare temperatuur"},"hint":{"en":"From min setpoint/override limit to max 40°C","nl":"Van minimale instelbare temperatuu tot max 40°C"},"zwave":{"index":4,"size":2},"attr":{"min":0,"max":40},"value":28}]},{"type":"group","label":{"en":"LED settings","nl":"LED instellingen"},"collapsed":false,"children":[{"id":"LED_Flash_period","type":"number","label":{"en":"LED Flash period","nl":"LED Kipper tijd"},"hint":{"en":"Seconds","nl":"Secondes"},"zwave":{"index":5,"size":2},"attr":{"min":0,"max":32767},"value":1},{"id":"LED_on_time","type":"number","label":{"en":"LED on time","nl":"LED aan tijd"},"hint":{"en":"100 to 500ms in 100ms steps","nl":"100 tot 500ms in stappen van 100ms"},"zwave":{"index":9,"size":1},"attr":{"min":1,"max":5},"value":1},{"id":"Number_of_LED_flashes","type":"number","label":{"en":"Number of LED flashes (duration)","nl":"Aantal maal LED knippert (tijd)"},"hint":{"en":"Flashes","nl":"Knippert"},"zwave":{"index":10,"size":2},"attr":{"min":0,"max":255},"value":5},{"id":"LED_Color","type":"dropdown","label":{"en":"LED Color","nl":"LED Kleur"},"zwave":{"index":11,"size":1},"value":"1","values":[{"id":"1","label":{"en":"Green","nl":"Groen"}},{"id":"2","label":{"en":"Red","nl":"Rood"}}]}]}]},{"name":{"nl":"Radiator Thermostaat Ally","en":"Radiator Thermostat Ally"},"energy":{"batteries":["AA","AA"]},"class":"thermostat","platforms":["local","cloud"],"connectivity":["zigbee"],"zigbee":{"manufacturerName":"Danfoss","productId":["eTRV0100","eTRV0103"],"endpoints":{"1":{"clusters":[0,1,3,10,32,513,516,2821]}},"learnmode":{"instruction":{"en":"1. Press and hold the button above the screen.\n2. Remove one battery.\n3. Hold the button above the screen down while replacing the battery, wait until the screen stops flashing.\n4. Wait until the screen turns off.\n5. Press the button again. Now you should see a flashing antenna in the bottom left corner of the screen.","nl":"1. Houd de knop boven het scherm ingedrukt.\n2. Verwijder één batterij.\n3. Houd de knop boven het scherm ingedrukt terwijl u de batterij terugplaatst, wacht tot het scherm stopt met knipperen.\n4. Wacht tot het scherm is uitgegaan.\n5. Druk de knop opnieuw in. Nu zou u een knipperende antenne links onderin het scherm moeten zien."}}},"capabilities":["measure_temperature","target_temperature","measure_battery"],"capabilitiesOptions":{"target_temperature":{"min":5,"max":35,"step":0.5}},"images":{"small":"/drivers/eTRV/assets/images/small.jpg","large":"/drivers/eTRV/assets/images/large.jpg"},"id":"eTRV"}]}
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.danfoss",
+  "sdk": 3,
+  "name": {
+    "en": "Danfoss",
+    "nl": "Danfoss"
+  },
+  "version": "2.3.1",
+  "compatibility": ">=5.0.0",
+  "description": {
+    "en": "Optimize the heating of your home",
+    "nl": "Optimaliseer de verwarming van uw huis"
+  },
+  "category": [
+    "climate"
+  ],
+  "brandColor": "#D8000F",
+  "tags": {
+    "en": [
+      "thermostat",
+      "heating",
+      "valve",
+      "thermovalve",
+      "danfoss",
+      "RS-Z"
+    ],
+    "nl": [
+      "thermostaat",
+      "verwarming",
+      "ventiel",
+      "thermostaatknop",
+      "danfoss",
+      "RS-Z"
+    ]
+  },
+  "images": {
+    "large": "/assets/images/large.jpg",
+    "small": "/assets/images/small.jpg"
+  },
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "author": {
+    "name": "Athom B.V."
+  },
+  "support": "https://support.athom.com/hc/en-us/requests/new",
+  "contributors": {
+    "developers": [
+      {
+        "name": "Athom B.V.",
+        "email": "info@athom.com"
+      },
+      {
+        "name": "Marco Ruiter",
+        "email": "mruiter@tuxweb.nl"
+      },
+      {
+        "name": "Menno Bliek (Momotica)",
+        "email": "menno@momotica.nl"
+      }
+    ]
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "battery_alarm",
+        "deprecated": true,
+        "title": {
+          "en": "The battery alarm turned on",
+          "nl": "De batterijwaarschuwing gaat aan"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=RS|LC13"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "LC13 Thermostat",
+        "nl": "LC13 Thermostaat"
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zwave"
+      ],
+      "zwave": {
+        "manufacturerId": 2,
+        "productTypeId": [
+          5,
+          277,
+          32773
+        ],
+        "wakeUpInterval": 1800,
+        "productId": [
+          1,
+          2,
+          3,
+          4,
+          373,
+          40976
+        ],
+        "learnmode": {
+          "instruction": {
+            "en": "Press the middle button on your Danfoss LC13",
+            "nl": "Druk op de middelste knop van de Danfoss LC13"
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 4,
+          "max": 28,
+          "step": 0.5
+        }
+      },
+      "images": {
+        "large": "/drivers/LC13/assets/images/large.jpg",
+        "small": "/drivers/LC13/assets/images/small.jpg"
+      },
+      "id": "LC13"
+    },
+    {
+      "name": {
+        "en": "RS-Z Room Sensor",
+        "nl": "RS-Z Kamer Sensor"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "measure_battery"
+      ],
+      "images": {
+        "large": "/drivers/RS/assets/images/large.png",
+        "small": "/drivers/RS/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zwave"
+      ],
+      "zwave": {
+        "manufacturerId": 2,
+        "productTypeId": [
+          3
+        ],
+        "wakeUpInterval": 1800,
+        "productId": [
+          32784
+        ],
+        "learnmode": {
+          "instruction": {
+            "en": "Press the LED button on your Danfoss RS-Z.",
+            "nl": "Druk op de LED knop van de Danfoss RS-Z."
+          }
+        },
+        "unlearnmode": {
+          "instruction": {
+            "en": "Hold down the 3 buttons on the RS-Z for 5 seconds (up, down and LED button).",
+            "nl": "Houd de 3 knoppen op de RS-Z 5 seconden ingedrukt (omhoog, omlaag en LED knop)."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. All run-time reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
+              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
+            }
+          }
+        },
+        "defaultConfiguration": [
+          {
+            "id": 1,
+            "size": 2,
+            "value": 5
+          },
+          {
+            "id": 2,
+            "size": 2,
+            "value": 5
+          },
+          {
+            "id": 3,
+            "size": 2,
+            "value": 12
+          },
+          {
+            "id": 4,
+            "size": 2,
+            "value": 28
+          },
+          {
+            "id": 5,
+            "size": 2,
+            "value": 1
+          },
+          {
+            "id": 6,
+            "size": 1,
+            "value": 1
+          },
+          {
+            "id": 7,
+            "size": 1,
+            "value": 1
+          },
+          {
+            "id": 8,
+            "size": 1,
+            "value": 1
+          },
+          {
+            "id": 9,
+            "size": 1,
+            "value": 1
+          },
+          {
+            "id": 10,
+            "size": 1,
+            "value": 5
+          },
+          {
+            "id": 11,
+            "size": 1,
+            "value": 1
+          }
+        ]
+      },
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 40,
+          "step": 0.5
+        }
+      },
+      "id": "RS",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Temperature settings",
+            "nl": "Temperatuur instellingen"
+          },
+          "collapsed": false,
+          "children": [
+            {
+              "id": "Temperature_Report_threshold",
+              "type": "number",
+              "label": {
+                "en": "Temperature Report threshold",
+                "nl": "Drempel temperatuurrapport"
+              },
+              "hint": {
+                "en": "From 0.1 to 10°C in 0.1°C steps",
+                "nl": "Van 0.1 tot 10°C in stappen van 0.1°C"
+              },
+              "zwave": {
+                "index": 1,
+                "size": 2
+              },
+              "attr": {
+                "min": 1,
+                "max": 100
+              },
+              "value": 5
+            },
+            {
+              "id": "Set-point_display_resolution",
+              "type": "number",
+              "label": {
+                "en": "Set-point display resolution",
+                "nl": "Temperatuur instel waarde"
+              },
+              "hint": {
+                "en": "From 0.1 to 10°C in 0.1°C steps",
+                "nl": "Van 0.1 tot 10°C in stappen van 0.1°C"
+              },
+              "zwave": {
+                "index": 2,
+                "size": 2
+              },
+              "attr": {
+                "min": 1,
+                "max": 100
+              },
+              "value": 5
+            },
+            {
+              "id": "Min_setpoint",
+              "type": "number",
+              "label": {
+                "en": "Min set-point and override limit",
+                "nl": "Minimale instelbare temperatuur"
+              },
+              "hint": {
+                "en": "From min 0°C to max setpoint/override limit",
+                "nl": "Van minimaal 0°C tot de maximale instelbare temperatuur"
+              },
+              "zwave": {
+                "index": 3,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 40
+              },
+              "value": 12
+            },
+            {
+              "id": "Max_setpoint",
+              "type": "number",
+              "label": {
+                "en": "Max set-point and override limit",
+                "nl": "Maximale instelbare temperatuur"
+              },
+              "hint": {
+                "en": "From min setpoint/override limit to max 40°C",
+                "nl": "Van minimale instelbare temperatuu tot max 40°C"
+              },
+              "zwave": {
+                "index": 4,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 40
+              },
+              "value": 28
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "LED settings",
+            "nl": "LED instellingen"
+          },
+          "collapsed": false,
+          "children": [
+            {
+              "id": "LED_Flash_period",
+              "type": "number",
+              "label": {
+                "en": "LED Flash period",
+                "nl": "LED Kipper tijd"
+              },
+              "hint": {
+                "en": "Seconds",
+                "nl": "Secondes"
+              },
+              "zwave": {
+                "index": 5,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 32767
+              },
+              "value": 1
+            },
+            {
+              "id": "LED_on_time",
+              "type": "number",
+              "label": {
+                "en": "LED on time",
+                "nl": "LED aan tijd"
+              },
+              "hint": {
+                "en": "100 to 500ms in 100ms steps",
+                "nl": "100 tot 500ms in stappen van 100ms"
+              },
+              "zwave": {
+                "index": 9,
+                "size": 1
+              },
+              "attr": {
+                "min": 1,
+                "max": 5
+              },
+              "value": 1
+            },
+            {
+              "id": "Number_of_LED_flashes",
+              "type": "number",
+              "label": {
+                "en": "Number of LED flashes (duration)",
+                "nl": "Aantal maal LED knippert (tijd)"
+              },
+              "hint": {
+                "en": "Flashes",
+                "nl": "Knippert"
+              },
+              "zwave": {
+                "index": 10,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "value": 5
+            },
+            {
+              "id": "LED_Color",
+              "type": "dropdown",
+              "label": {
+                "en": "LED Color",
+                "nl": "LED Kleur"
+              },
+              "zwave": {
+                "index": 11,
+                "size": 1
+              },
+              "value": "1",
+              "values": [
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Green",
+                    "nl": "Groen"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Red",
+                    "nl": "Rood"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "nl": "Radiator Thermostaat Ally",
+        "en": "Radiator Thermostat Ally"
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "class": "thermostat",
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": "Danfoss",
+        "productId": [
+          "eTRV0100",
+          "eTRV0103"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              10,
+              32,
+              513,
+              516,
+              2821
+            ]
+          }
+        },
+        "learnmode": {
+          "instruction": {
+            "en": "1. Press and hold the button above the screen.\n2. Remove one battery.\n3. Hold the button above the screen down while replacing the battery, wait until the screen stops flashing.\n4. Wait until the screen turns off.\n5. Press the button again. Now you should see a flashing antenna in the bottom left corner of the screen.",
+            "nl": "1. Houd de knop boven het scherm ingedrukt.\n2. Verwijder één batterij.\n3. Houd de knop boven het scherm ingedrukt terwijl u de batterij terugplaatst, wacht tot het scherm stopt met knipperen.\n4. Wacht tot het scherm is uitgegaan.\n5. Druk de knop opnieuw in. Nu zou u een knipperende antenne links onderin het scherm moeten zien."
+          }
+        }
+      },
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 5,
+          "max": 35,
+          "step": 0.5
+        }
+      },
+      "images": {
+        "small": "/drivers/eTRV/assets/images/small.jpg",
+        "large": "/drivers/eTRV/assets/images/large.jpg"
+      },
+      "id": "eTRV"
+    }
+  ]
+}
